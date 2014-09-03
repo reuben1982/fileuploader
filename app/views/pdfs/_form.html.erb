@@ -1,0 +1,58 @@
+<%= form_for @pdf,:url => pdfs_path, :html => { :multipart => true } do |f| %>
+
+    <% if @pdf.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@pdf.errors.count, "error") %> prohibited this pdf from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @pdf.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+
+  
+
+  <div class="control-group">
+    <%= f.label :file_pdf, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :file_pdf %>
+    </div>
+    
+  </div>
+  </br>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@pdf[:name]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :tags, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :tags, :class => 'form-control' %>
+    </div>
+    <%= error_span(@pdf[:tags]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'form-control' %>
+    </div>
+    <%= error_span(@pdf[:description]) %>
+  </div>
+   </br>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            pdfs_path, :class => 'btn btn-default' %>
+
+<% end %>
