@@ -4,7 +4,11 @@ class PdfsController < ApplicationController
   # GET /pdfs
   # GET /pdfs.json
   def index
-    @pdfs = Pdf.all
+   
+
+    @search = Pdf.search(params[:q])
+    @pdfs = @search.result
+
   end
 
   # GET /pdfs/1
