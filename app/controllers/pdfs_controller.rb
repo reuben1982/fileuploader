@@ -8,6 +8,7 @@ class PdfsController < ApplicationController
 
     @search = Pdf.search(params[:q])
     @pdfs = @search.result
+    
 
   end
 
@@ -74,6 +75,6 @@ class PdfsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pdf_params
-      params.require(:pdf).permit(:file_pdf, :name, :tags, :description)
+      params.require(:pdf).permit(:file_pdf, :name, :state, :tags, :description)
     end
 end

@@ -34,12 +34,16 @@
     </div>
     <%= error_span(@pdf[:name]) %>
   </div>
-  <div class="control-group">
+
+  
+<div class="control-group">
     <%= f.label :tags, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :tags, :class => 'form-control' %>
+     <%= f.select(:tags, Pdf::STATUS_OPTIONS) %>
     </div>
-    <%= error_span(@pdf[:tags]) %>
+
+ 
+  
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
@@ -48,6 +52,13 @@
     </div>
     <%= error_span(@pdf[:description]) %>
   </div>
+   </br>
+
+    <div class="control-group">
+    <%= f.label :state, :class => 'control-label' %>
+    <div class="controls">
+       <%= f.select(:state, Pdf::STATES_LIST) %>
+    </div>
    </br>
 
 

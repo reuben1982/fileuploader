@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903210346) do
+ActiveRecord::Schema.define(version: 20140908204428) do
+
+  create_table "offerings", force: true do |t|
+    t.string   "status"
+    t.string   "state"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pdfs", force: true do |t|
     t.string   "name"
@@ -23,6 +32,8 @@ ActiveRecord::Schema.define(version: 20140903210346) do
     t.string   "file_pdf_content_type"
     t.integer  "file_pdf_file_size"
     t.datetime "file_pdf_updated_at"
+    t.string   "type"
+    t.string   "state"
   end
 
 end

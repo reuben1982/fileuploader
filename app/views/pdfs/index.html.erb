@@ -1,38 +1,54 @@
 <%- model_class = Pdf -%>
 <div class="page-header">
   <h1>Listing Files</h1>
+<%#______-------- Start search field %>
 </br>
   <%= search_form_for @search do |f| %>
   <div class="field">
-    <%= f.label :name_cont, "Name contains" %>
-    <%= f.text_field :name_cont %><%= f.submit "Search" %>
+    <%= f.label :name_cont, "Search File Name" %>
+     <%= f.text_field :name_cont, :class => 'form-control' %>
+     </br>
+    <%= f.label :id_gteq, "ID is between" %>
+    <%= f.text_field :id_gteq %>
+    <%= f.label :id_lteq, "and" %>
+    <%= f.text_field :id_lteq %>   
+    </br>
+    
   </div>
+  <%= f.submit "Search", :class => 'btn btn-xs btn-success'%>
+
   <div class="actions"></div>
 <% end %>
 </br>
+<%# end search field %>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:tags) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><b><%= sort_link(@search, :id, "ID",:class => 'btn btn-inverse') %></b></th>
+      
+      <th><b><%= sort_link(@search, :tags, "Status") %></b></th>
+      <th><b><%= sort_link(@search, :name, "Name") %></b></th>
+      <th><b><%= sort_link(@search, :description, "Description") %></b></th>
+      <th><b><%= sort_link(@search, :state, "State") %></b></th>
+      <th><b><%= sort_link(@search, :created_at, "Date Posted") %></b></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @pdfs.each do |pdf| %>
       <tr>
-        <td><%= link_to pdf.id, pdf_path(pdf) %></td>
-        <td><%= pdf.name %></td>
+        <td><%= link_to pdf.id%></td></ul>
         <td><%= pdf.tags %></td>
+        <td><%= link_to pdf.name, pdf_path(pdf) %></td>
+        
         <td><%= pdf.description %></td>
-        <td><%=l pdf.created_at %></td>
+        <td><%= pdf.state %></td>
+        <td><%= pdf.created_at.strftime("%m/%d/%Y") %></td>
         <td>
          
-          <%= link_to t('.view'),pdf.file_pdf.url, :class => 'btn btn-xs btn-warning'  %>          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%= link_to t('.view'),pdf.file_pdf.url, :class => 'btn btn-xs btn-warning'  %>          
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_pdf_path(pdf), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       pdf_path(pdf),
