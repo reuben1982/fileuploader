@@ -15,7 +15,7 @@
     </br>
     
   </div>
-  <%= f.submit "Search", :class => 'btn btn-xs btn-success'%>
+  <%= f.submit "Search", :class => 'btn btn-sm btn-success active'%>
 
   <div class="actions"></div>
 <% end %>
@@ -38,7 +38,7 @@
   <tbody>
     <% @pdfs.each do |pdf| %>
       <tr>
-        <td><%= link_to pdf.id%></td></ul>
+        <td><%= link_to pdf.id%></td>
         <td><%= pdf.tags %></td>
         <td><%= link_to pdf.name, pdf_path(pdf) %></td>
         
@@ -47,14 +47,14 @@
         <td><%= pdf.created_at.strftime("%m/%d/%Y") %></td>
         <td>
          
-          <%= link_to t('.view'),pdf.file_pdf.url, :class => 'btn btn-xs btn-warning'  %>          
+          <%= link_to t('.view'),pdf.file_pdf.url, :class => 'btn btn-xs btn-warning active'  %>          
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_pdf_path(pdf), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       pdf_path(pdf),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+                      :class => 'btn btn-xs btn-danger active' %>
         </td>
       </tr>
     <% end %>
@@ -63,4 +63,4 @@
 
 <%= link_to t('.AddFile', :default => t("helpers.links.AddFile")),
             new_pdf_path,
-            :class => 'btn btn-primary' %>
+            :class => 'btn btn-primary btn-sm active' %>
