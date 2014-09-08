@@ -21,7 +21,7 @@ gem 'twitter-bootstrap-rails'
 gem "paperclip", "~> 4.2"
 
 
-
+gem 'will_paginate'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

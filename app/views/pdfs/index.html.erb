@@ -36,7 +36,8 @@
     </tr>
   </thead>
   <tbody>
-    <% @pdfs.each do |pdf| %>
+    <%= will_paginate @pdfs %>
+    <% for pdf in @pdfs %>
       <tr>
         <td><%= link_to pdf.id%></td>
         <td><%= pdf.tags %></td>
