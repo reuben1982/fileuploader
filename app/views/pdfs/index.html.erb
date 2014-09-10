@@ -37,6 +37,7 @@
   </thead>
   <tbody>
     <%= will_paginate @pdfs %>
+    <%= javascript_include_tag "color" %>
     <% for pdf in @pdfs %>
       <tr>
         <td><%= link_to pdf.id%></td>

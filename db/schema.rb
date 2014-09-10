@@ -13,15 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140908204428) do
 
-  create_table "offerings", force: true do |t|
-    t.string   "status"
-    t.string   "state"
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "pdfs", force: true do |t|
     t.string   "name"
     t.string   "tags"
