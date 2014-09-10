@@ -13,8 +13,13 @@
     <%= f.label :id_lteq, "and" %>
     <%= f.text_field :id_lteq %>   
     </br>
-    
+    <div class="field"></br>
+    <b>Sort:</b>&nbsp;
+    <%= f.sort_fields do |s| %>
+      <%= s.sort_select %>
+    <% end %>
   </div>
+ 
   <%= f.submit "Search", :class => 'btn btn-sm btn-success active'%>
 
   <div class="actions"></div>
@@ -49,7 +54,7 @@
         <td><%= pdf.created_at.strftime("%m/%d/%Y") %></td>
         <td>
          
-          <%= link_to t('.view'),pdf.file_pdf.url, :class => 'btn btn-xs btn-warning active'  %>          
+          <%= link_to t('.view'),pdf_path(pdf) , :class => 'btn btn-xs btn-warning active'  %>          
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_pdf_path(pdf), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

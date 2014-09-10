@@ -9,7 +9,7 @@ class PdfsController < ApplicationController
     @search = Pdf.search(params[:q])
     @pdfs = @search.result(:distinct => true).paginate(:page => params[:page], :per_page => 4) 
      
-
+     @search.build_sort if @search.sorts.empty?
     
 
   end
